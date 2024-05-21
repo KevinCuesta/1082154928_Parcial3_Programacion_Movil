@@ -5,12 +5,9 @@
           <ion-title>Categoria Crud</ion-title>
         </ion-toolbar>
       </ion-header>
-      <InputComponent v-model="tipoDocumento" id="tipoDocumento" name="tipoDocumento"
-                  label="Tipo Documento: " />
-                <InputComponent v-model="documento" type="number" id="documento" name="documento" label="Documento: " />
+      <InputComponent v-model="id" id="id" type="" name="id"  />
                 <InputComponent v-model="nombre" id="nombre" name="nombre" label="Nombre: " />
-                <InputComponent v-model="metodoPago" id="metodoPago" name="metodoPago" label="Método Pago: " />
-                <InputComponent v-model="direccion" id="direccion" name="direccion" label="Dirección: " />
+                <InputComponent v-model="descripcion" id="descripcion" name="descripcion" label="Descripcion: " />
   
         
          
@@ -27,24 +24,12 @@
               <ion-card v-for="(item, index) in items" :key="index" class="card-width">
                 <ion-card-content>
                   <ion-item>
-                    <ion-label>Tipo de Documento: </ion-label>
-                    <ion-label>{{ item.tipoDocumento }}</ion-label>
-                  </ion-item>
-                  <ion-item>
-                    <ion-label>Documento: </ion-label>
-                    <ion-label>{{ item.documento }}</ion-label>
-                  </ion-item>
-                  <ion-item>
                     <ion-label>Nombre: </ion-label>
                     <ion-label>{{ item.nombre }}</ion-label>
                   </ion-item>
                   <ion-item>
                     <ion-label>Método de Pago: </ion-label>
-                    <ion-label>{{ item.metodoPago }}</ion-label>
-                  </ion-item>
-                  <ion-item>
-                    <ion-label>Dirección: </ion-label>
-                    <ion-label>{{ item.direccion }}</ion-label>
+                    <ion-label>{{ item.descripcion }}</ion-label>
                   </ion-item>
                 </ion-card-content>
                 <ion-item>
@@ -63,7 +48,7 @@
   </template>
   
   <script setup lang="ts">
-  import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonIcon, IonModal } from '@ionic/vue';
+  import {IonHeader, IonPage, IonTitle, IonToolbar, IonIcon } from '@ionic/vue';
   import InputComponent from '@/components/InputComponent.vue';
   import CrudButtonComponent from '@/components/CrudButtonComponent.vue';
   import { showSuccessMessage, showErrorMessage } from '../utils/alerts.js';
@@ -73,16 +58,12 @@
   
   
   // Rutas de la API
-  // const baseURL = 'http://localhost:9000/shopping-car/api/cliente';
-  const baseURL = 'https://zctlpc09-9000.use.devtunnels.ms/shopping-car/api/cliente';
+  const baseURL = 'http://localhost:9000/estructura/api/categoria';
   const modalIsOpen = ref(false);
   const items = ref<Array<ItemType>>([]);
   const id = ref('');
-  const tipoDocumento = ref('');
-  const documento = ref('');
   const nombre = ref('');
-  const metodoPago = ref('');
-  const direccion = ref('');
+  const descripcion = ref('');
   
   const showFind = ref<boolean>(false);
   const showCreated = ref<boolean>(true);
@@ -93,11 +74,8 @@
   // Tipos
   interface ItemType {
     id: string;
-    tipoDocumento: string;
-    documento: string;
     nombre: string;
-    metodoPago: string;
-    direccion: string;
+    descripcion: string;
   }
   
   onMounted(() => {
@@ -123,11 +101,8 @@
       const data = response.data;
   
       id.value = data.id;
-      tipoDocumento.value = data.tipoDocumento;
-      documento.value = data.documento;
       nombre.value = data.nombre;
-      metodoPago.value = data.metodoPago;
-      direccion.value = data.direccion;
+      descripcion.value = data.metodoPago;
   
       // Controlar la visibilidad de los botones
       showCreated.value = false;
@@ -142,11 +117,8 @@
   
   async function createRecord() {
     const data = {
-      tipoDocumento: tipoDocumento.value,
-      documento: documento.value,
       nombre: nombre.value,
-      metodoPago: metodoPago.value,
-      direccion: direccion.value
+      descripcion: descripcion.value,
     };
   
     try {
@@ -165,11 +137,8 @@
   async function updateRecord() {
     const data = {
       id: id.value,
-      tipoDocumento: tipoDocumento.value,
-      documento: documento.value,
       nombre: nombre.value,
-      metodoPago: metodoPago.value,
-      direccion: direccion.value
+      descripcion: descripcion.value,
     };
   
     try {
@@ -214,11 +183,8 @@
   }
   
   async function clearData() {
-    tipoDocumento.value = '';
-    documento.value = '';
     nombre.value = '';
-    metodoPago.value = '';
-    direccion.value = '';
+    descripcion.value = '';
   }
   
   
