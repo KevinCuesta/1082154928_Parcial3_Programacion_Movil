@@ -13,10 +13,6 @@ const routes: Array<RouteRecordRaw> = [
     path: '/home',
     name: 'Home',
     component: HomePage
-  },{
-    path: '/cliente',
-    name: 'Cliente',
-    component: ClientePage
   },
   {
     path: '/dashboard',
