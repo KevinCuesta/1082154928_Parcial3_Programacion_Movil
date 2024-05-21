@@ -1,6 +1,6 @@
 Proyecto corriendo 
 Puerto: 9000
-http://localhost:9000/estructura
+http://localhost:9000/api/carro
 adjunto json para validar datos 
 
 para iniciar el front instalar dependencias en el front
