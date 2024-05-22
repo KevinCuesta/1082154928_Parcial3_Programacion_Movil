@@ -12,6 +12,10 @@
         <strong><a href="/categoria">Ir a Categoria</a></strong>
         <br>
         <strong><a href="/carro">Ir a Carro</a></strong>
+        <br>
+        <strong><a href="/categoriacrud">Ir a Crud Categoria</a></strong>
+        <br>
+        <strong><a href="/carrocrud">Ir a Crud Carro</a></strong>
 
       </div>
 
